@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment # kind of object inthis file
+metadata:
+  name: client-deployment # name of the deployment
+spec:
+  replicas: 2 # number of pods
+  selector:
+    matchLabels:
+      component: web # this depymnet file will be managing web
+  template: # the pod templates
+    metadata:
+      labels:
+        component: web # mange diferent pods
+    spec:
+      containers:
+        - name: client # name of the container
+          image: aam300/app # image we want use
+          ports:
+            - containerPort: 3000 # posrt maped to image
